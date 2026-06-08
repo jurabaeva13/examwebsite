@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantify - All Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../scripts/tailwind-config.js"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { @apply font-libre bg-white text-primary-green; }
+        }
+        @layer components {
+            #mobile-menu.active { @apply translate-x-0; }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="relative w-full h-[80px] lg:h-[129px] bg-primary-green z-[100]">
+        <div class="flex justify-between items-center h-full max-w-container mx-auto px-5 lg:px-[140px] relative">
+            <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <div class="absolute left-1/2 lg:left-[660px] -translate-x-1/2 lg:translate-x-0 top-1/2 lg:top-[21px] -translate-y-1/2 lg:translate-y-0">
+                <a href="../index.html"><img src="../images/logo.png" alt="Logo" class="w-[80px] lg:w-[119px]"></a>
+            </div>
+            <nav class="hidden lg:block">
+                <ul class="flex list-none gap-[40px] items-center absolute left-[140px] top-[58px]">
+                    <li><a href="../index.html" class="font-dm-sans text-white hover:opacity-80">Home</a></li>
+                    <li><a href="all-products.html" class="font-dm-sans text-white hover:opacity-80">Shop</a></li>
+                    <li><a href="#" class="font-dm-sans text-white hover:opacity-80">Fertilizer</a></li>
+                    <li><a href="#" class="font-dm-sans text-white hover:opacity-80">Guide</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center gap-3 lg:gap-[20px]">
+                <a href="liked.html" class="text-white relative transition-opacity duration-300 hover:opacity-80">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <span id="like-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <a href="cart.html" class="text-white relative transition-opacity duration-300 hover:opacity-80">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-brown text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="fixed inset-0 bg-primary-green z-[200] transform -translate-x-full transition-transform duration-300 lg:hidden">
+            <div class="p-5 flex flex-col h-full">
+                <button id="close-menu-btn" class="self-end text-white p-2"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+                <nav class="mt-10">
+                    <ul class="flex flex-col gap-8 text-white text-2xl font-libre">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="all-products.html">Shop</a></li>
+                        <li><a href="#">Fertilizer</a></li>
+                        <li><a href="#">Guide</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-container mx-auto w-full py-10 lg:py-20 px-5 lg:px-[140px]">
+        <h1 class="text-[32px] lg:text-[40px] font-bold mb-10 text-primary-green text-center lg:text-left">All Products</h1>
+        <div id="all-products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Loading state -->
+            <p class="text-center col-span-full py-20">Loading amazing products...</p>
+        </div>
+    </main>
+
+    <footer class="py-10 bg-light-bg text-center text-text-gray text-sm mt-auto">
+        © 2026 Plantify. All rights reserved.
+    </footer>
+
+    <script src="../scripts/all-products.js"></script>
+</body>
+</html>

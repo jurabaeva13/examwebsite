@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantify - Plant Shop Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="scripts/tailwind-config.js"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-libre bg-white text-primary-green;
+            }
+        }
+        @layer components {
+            .hero-pattern {
+                background-image: radial-gradient(circle at center, #C4C4C4 1.835px, transparent 1.835px);
+                background-size: 15.9px 15.9px;
+            }
+            #mobile-menu.active {
+                @apply translate-x-0;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="relative w-full h-[80px] lg:h-[129px] bg-primary-green z-[100]">
+        <div class="flex justify-between items-center h-full max-w-container mx-auto px-5 lg:px-[140px] relative">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Logo -->
+            <div class="absolute left-1/2 lg:left-[660px] -translate-x-1/2 lg:translate-x-0 top-1/2 lg:top-[21px] -translate-y-1/2 lg:translate-y-0">
+                <a href="index.html"><img src="images/logo.png" alt="Plantify Logo" class="w-[80px] lg:w-[119px]"></a>
+            </div>
+            
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden lg:block">
+                <ul class="flex list-none gap-[40px] items-center absolute left-[140px] top-[58px]">
+                    <li><a href="index.html" class="font-dm-sans font-normal text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-80">Home</a></li>
+                    <li><a href="pages/all-products.html" class="font-dm-sans font-normal text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-80">Shop</a></li>
+                    <li><a href="#" class="font-dm-sans font-normal text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-80">Fertilizer</a></li>
+                    <li><a href="#" class="font-dm-sans font-normal text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-80">Guide</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Header Actions -->
+            <div class="flex items-center gap-3 lg:gap-[20px]">
+                <div class="flex gap-3 lg:gap-[20px]">
+                    <a href="pages/liked.html" class="text-white relative transition-opacity duration-300 hover:opacity-80">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span id="like-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <a href="pages/cart.html" class="text-white relative transition-opacity duration-300 hover:opacity-80">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-brown text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-0 bg-primary-green z-[200] transform -translate-x-full transition-transform duration-300 lg:hidden">
+            <div class="p-5 flex flex-col h-full">
+                <button id="close-menu-btn" class="self-end text-white p-2">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <nav class="mt-10">
+                    <ul class="flex flex-col gap-8 text-white text-2xl font-libre">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/all-products.html">Shop</a></li>
+                        <li><a href="#">Fertilizer</a></li>
+                        <li><a href="#">Guide</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-auto min-h-[500px] lg:h-[840px] bg-primary-green overflow-hidden py-10 lg:py-0">
+        <div class="hero-pattern absolute inset-0 opacity-60"></div>
+        <div class="relative max-w-container mx-auto h-full px-5 lg:px-0 flex flex-col lg:block items-center">
+            <!-- Hero Text -->
+            <div class="lg:absolute w-full lg:w-[420px] lg:left-[140px] lg:top-[238px] text-center lg:text-left mb-10 lg:mb-0">
+                <h1 class="font-inter font-medium text-[36px] lg:text-[64px] leading-tight tracking-[1.5px] text-light-green mb-8">Happiness blooms from within</h1>
+                <p class="font-libre font-normal text-[16px] leading-[28px] tracking-[0.3px] text-light-green mb-8">Our environment, the world in which we live and work, is a mirror of our attitudes and expectations.</p>
+                
+                <!-- Hero Actions Mobile/Desktop Mix -->
+                <div class="flex flex-col lg:flex-row gap-6 lg:gap-[43px] items-center">
+                    <button class="w-[156px] h-[59px] bg-light-green flex items-center justify-center font-dm-sans text-[16px] text-primary-green transition-opacity duration-300 hover:opacity-90">Shop now</button>
+                    <a href="#" class="font-libre text-[16px] text-light-green no-underline flex items-center gap-4">
+                        Explore plants
+                        <svg width="16" height="1" viewBox="0 0 16 1">
+                            <line x1="0" y1="0.5" x2="16" y2="0.5" stroke="currentColor" stroke-width="1.2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Images -->
+            <div class="relative lg:absolute w-full lg:w-[607px] h-auto lg:h-[547px] lg:left-[693px] lg:top-[199px] flex flex-col lg:block items-center gap-5">
+                <!-- Main Anthurium -->
+                <div class="relative w-full max-w-[380px] lg:w-[379.79px] h-[400px] lg:h-[547.19px] lg:absolute lg:left-[227.21px] lg:top-0 rounded-[20px] overflow-hidden shadow-2xl">
+                    <img src="images/anthurium-main.png" alt="Anthurium Flower" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-[linear-gradient(178.62deg,rgba(46,64,61,0)_25.35%,#234A45_91.06%)] p-[30px] flex flex-col justify-end">
+                        <h3 class="font-libre text-[28px] leading-[34px] text-light-green mb-4">Anthurium Flower</h3>
+                        <p class="font-libre text-[14px] leading-[18px] text-light-green mb-5">Meaningful plant that always grows whatever season...</p>
+                        <button class="bg-white border-none py-[17px] w-full font-libre text-[12px] tracking-[3.2px] text-primary-green cursor-pointer text-center hover:bg-opacity-90 transition-all">READ MORE</button>
+                    </div>
+                </div>
+                
+                <!-- Side Plants -->
+                <div class="flex lg:block gap-4 w-full lg:w-auto lg:absolute lg:left-0 lg:top-0 justify-center">
+                    <img src="images/plant-3.png" alt="Plant 3" class="w-[140px] lg:w-[222.82px] h-[160px] lg:h-[257.41px] rounded-[15px] lg:absolute lg:left-0 lg:top-0 object-cover shadow-lg">
+                    <img src="images/plant-2.png" alt="Plant 2" class="w-[140px] lg:w-[222.82px] h-[160px] lg:h-[285.39px] rounded-[15px] lg:absolute lg:left-0 lg:top-[261.8px] object-cover shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer Section -->
+    <section class="h-10 lg:h-20 bg-white"></section>
+
+    <!-- Featured Products Section -->
+    <section class="relative py-10 lg:py-20 bg-white overflow-hidden">
+        <div class="max-w-container mx-auto relative px-5 lg:px-[140px]">
+            <div class="flex justify-between items-center mb-10 lg:mb-24">
+                <h2 class="font-libre text-[28px] lg:text-[40px] text-primary-green">Featured</h2>
+                <a href="pages/all-products.html" class="font-libre text-[18px] lg:text-[24px] text-primary-green no-underline hover:opacity-70 transition-all">view all</a>
+            </div>
+            
+            <div id="featured-products-container" class="flex gap-7 overflow-x-auto pb-10 scrollbar-hide">
+                <!-- Products dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="relative py-10 lg:py-[120px] bg-white">
+        <div class="max-w-container mx-auto relative px-5 lg:px-[142px]">
+            <div class="flex justify-between items-center mb-10 lg:mb-[100px]">
+                <h2 class="font-libre text-[28px] lg:text-[40px] text-primary-green">New Arrivals</h2>
+                <a href="pages/all-products.html" class="font-libre text-[18px] lg:text-[24px] text-primary-green no-underline hover:opacity-70 transition-all">view all</a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="relative group h-[400px] overflow-hidden rounded-[20px] shadow-lg">
+                    <img src="images/new-arrival-1.png" alt="Blue Lily" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                <img src="images/new-arrival-2.png" class="h-[400px] w-full object-cover rounded-[20px] shadow-lg">
+                <img src="images/new-arrival-3.png" class="h-[400px] w-full object-cover rounded-[20px] shadow-lg">
+                <img src="images/new-arrival-4.png" class="h-[400px] w-full object-cover rounded-[20px] shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    
+
+    <footer class="relative py-10 bg-light-bg mt-10">
+        <div class="max-w-container mx-auto text-center px-5">
+            <p class="font-libre text-sm text-text-gray">© 2026 Plantify. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/products.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
